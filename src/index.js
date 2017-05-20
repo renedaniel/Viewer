@@ -51,8 +51,23 @@ class App extends Component {
 		this.performState(this.state.seasons, this.state.selectedSeason.number, ev.target.id);
 	}
 
-	searchTerm(term) {
-		console.log(this.props.seasonsCache);
+	searchTerm(search) {
+		let busqueda = search.term.toLowerCase();
+		let seasons = [];
+		if (busqueda == '') {
+			seasons = this.seasonsCache;
+		} else {
+			seasons = this.seasonsCache.filter(season => {
+				if (season.title.toLowerCase().indexOf(busqueda) != -1) {
+					return season;
+				}
+			});
+		}
+		if (seasons.length > 0) {
+			this.performState(seasons, seasons[0].number);
+		} else {
+			console.log('No results');
+		}
 	}
 
 	render() {
