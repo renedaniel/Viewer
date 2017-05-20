@@ -20,13 +20,7 @@ class App extends Component {
   		.then((response) => {
 				if (response.data.status === '0') {
 					let r = response.data.response;
-					this.setState({
-						seasons: r.seasons,
-						selectedSeason: r.seasons[0],
-						selectedEpisode: r.seasons[0].episodes.find( episode => {
-							return episode.episode_number == 1;
-						}),
-					});
+					this.performState(r.seasons, 1);
 				}
 		  })
 		  .catch(function (error) {
@@ -35,13 +29,22 @@ class App extends Component {
 
 	}
 
-	seasonSelect (ev) {
-		this.setState({
-			seasons: this.state.seasons,
-			selectedSeason: this.state.seasons.find( season => {
-				return season.id === ev.target.value;
-			}),
+	performState( seasons, selectedSeasonNumber ){
+		let selectedSeason = seasons.find( season => {
+			return season.number == selectedSeasonNumber;
 		});
+		let selectedEpisode = selectedSeason.episodes.find( episode => {
+			return episode.id == selectedSeason.first_episode;
+		});
+		this.setState({ seasons, selectedSeason, selectedEpisode });
+	}
+
+	selectSeason( ev ) {
+		this.performState(this.state.seasons, ev.target.value);
+	}
+
+	selectEpisode( ev ) {
+		this.performState(this.state.seasons, this.state.selectSeason.number, ev.target.value);
 	}
 
 	render() {
@@ -49,11 +52,14 @@ class App extends Component {
 			<div>
 				<SearchBar />
 				<SeasonList
-					onSeasonSelect={ev => this.seasonSelect(ev)}
+					onSeasonSelect={ev => this.selectSeason(ev)}
 					selectedSeason={this.state.selectedSeason}
 					seasons={this.state.seasons}
 				/>
-				<SeasonDetail season={this.state.selectedSeason} selectedEpisode={this.state.selectedEpisode} />
+				<SeasonDetail
+					season={this.state.selectedSeason}
+					selectedEpisode={this.state.selectedEpisode} 
+				/>
 			</div>
 		);
 	}

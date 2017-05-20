@@ -12,7 +12,7 @@ const EpisodeDetail = ({episode}) => {
 
   return (
     <Row>
-      titulo
+      {titulo}
       <MediaBox src={imgUrl} caption={titulo} width="650"/>
   </Row>
   );

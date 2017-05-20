@@ -2,10 +2,10 @@ import React from 'react';
 
 const SeasonListItem = ({season}) => {
   const titulo = season.title;
-  const id = season.id;
+  const numero = season.number;
 
   return (
-    <option value={id}>{titulo}</option>
+    <option value={numero}>{titulo}</option>
   );
 };
 

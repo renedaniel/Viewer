@@ -23,7 +23,7 @@ const SeasonList = ({seasons, selectedSeason, onSeasonSelect}) => {
         s={12}
         type='select'
         label="Temporada"
-        value={selectedSeason.id}
+        value={selectedSeason.number}
         onChange={onSeasonSelect}
       >
         {seasonsItems}
