@@ -1,11 +1,12 @@
 import React from 'react';
 import {CollectionItem} from 'react-materialize';
 
-const EpisodeListItem = ({episode}) => {
+const EpisodeListItem = ({episode, onEpisodeSelect}) => {
   const titulo = episode.title_episode;
+  const id = episode.id;
 
   return (
-    <CollectionItem href='#'>{titulo}</CollectionItem>
+    <CollectionItem onClick={onEpisodeSelect} id={id} href='#'>{titulo}</CollectionItem>
   );
 };
 

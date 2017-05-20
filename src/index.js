@@ -29,11 +29,14 @@ class App extends Component {
 
 	}
 
-	performState( seasons, selectedSeasonNumber ){
+	performState( seasons, selectedSeasonNumber, selectedEpisodeId = undefined ){
 		let selectedSeason = seasons.find( season => {
 			return season.number == selectedSeasonNumber;
 		});
 		let selectedEpisode = selectedSeason.episodes.find( episode => {
+			if (selectedEpisodeId !== undefined) {
+					return episode.id == selectedEpisodeId;
+			}
 			return episode.id == selectedSeason.first_episode;
 		});
 		this.setState({ seasons, selectedSeason, selectedEpisode });
@@ -44,7 +47,7 @@ class App extends Component {
 	}
 
 	selectEpisode( ev ) {
-		this.performState(this.state.seasons, this.state.selectSeason.number, ev.target.value);
+		this.performState(this.state.seasons, this.state.selectedSeason.number, ev.target.id);
 	}
 
 	render() {
@@ -57,8 +60,9 @@ class App extends Component {
 					seasons={this.state.seasons}
 				/>
 				<SeasonDetail
+					onEpisodeSelect={ev => this.selectEpisode(ev)}
 					season={this.state.selectedSeason}
-					selectedEpisode={this.state.selectedEpisode} 
+					selectedEpisode={this.state.selectedEpisode}
 				/>
 			</div>
 		);

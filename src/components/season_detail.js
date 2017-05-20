@@ -3,8 +3,8 @@ import {Row, Card, CardTitle} from 'react-materialize';
 import EpisodeList from './episode_list';
 import EpisodeDetail from './episode_detail';
 
-const SeasonDetail = ({season, selectedEpisode}) => {
-  if (!season || !selectedEpisode) {
+const SeasonDetail = ({season, selectedEpisode, onEpisodeSelect}) => {
+  if (!season || !selectedEpisode || !onEpisodeSelect) {
     return <div>loading...</div>;
   }
 
@@ -23,7 +23,7 @@ const SeasonDetail = ({season, selectedEpisode}) => {
 
     </Card>
     <EpisodeDetail episode={selectedEpisode} />
-    <EpisodeList episodes={episodes}  />
+    <EpisodeList episodes={episodes} onEpisodeSelect={onEpisodeSelect}  />
   </Row>
   );
 
