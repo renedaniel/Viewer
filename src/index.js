@@ -21,6 +21,7 @@ class App extends Component {
 				if (response.data.status === '0') {
 					let r = response.data.response;
 					this.performState(r.seasons, 1);
+					this.seasonsCache = r.seasons;
 				}
 		  })
 		  .catch(function (error) {
@@ -29,31 +30,35 @@ class App extends Component {
 
 	}
 
-	performState( seasons, selectedSeasonNumber, selectedEpisodeId = undefined ){
+	performState(seasons, selectedSeasonNumber, selectedEpisodeId = undefined){
 		let selectedSeason = seasons.find( season => {
 			return season.number == selectedSeasonNumber;
 		});
 		let selectedEpisode = selectedSeason.episodes.find( episode => {
 			if (selectedEpisodeId !== undefined) {
-					return episode.id == selectedEpisodeId;
+				return episode.id == selectedEpisodeId;
 			}
 			return episode.id == selectedSeason.first_episode;
 		});
 		this.setState({ seasons, selectedSeason, selectedEpisode });
 	}
 
-	selectSeason( ev ) {
+	selectSeason(ev) {
 		this.performState(this.state.seasons, ev.target.value);
 	}
 
-	selectEpisode( ev ) {
+	selectEpisode(ev) {
 		this.performState(this.state.seasons, this.state.selectedSeason.number, ev.target.id);
+	}
+
+	searchTerm(term) {
+		console.log(this.props.seasonsCache);
 	}
 
 	render() {
 		return (
 			<div>
-				<SearchBar />
+				<SearchBar onSearchTermChange={term => this.searchTerm(term)} />
 				<SeasonList
 					onSeasonSelect={ev => this.selectSeason(ev)}
 					selectedSeason={this.state.selectedSeason}

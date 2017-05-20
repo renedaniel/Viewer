@@ -8,7 +8,7 @@ const EpisodeDetail = ({episode}) => {
 
   const titulo = episode.title_episode;
   const descripcion = episode.description_large;
-  const imgUrl = episode.image_large;
+  const imgUrl = episode.image_still;
 
   return (
     <Row>
