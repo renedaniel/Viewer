@@ -1,9 +1,11 @@
 import React from 'react';
 
 const SeasonListItem = ({season}) => {
+  const titulo = season.title;
+  const id = season.id;
 
   return (
-    <li>aa </li>
+    <option value={id}>{titulo}</option>
   );
 };
 
