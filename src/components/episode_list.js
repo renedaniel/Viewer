@@ -1,6 +1,6 @@
 import React from 'react';
 import EpisodeListItem from './episode_list_item';
-import {Collection} from 'react-materialize';
+import {Row, Col} from 'react-materialize';
 
 const EpisodeList = ({episodes, onEpisodeSelect}) => {
   if (!episodes) {
@@ -12,9 +12,9 @@ const EpisodeList = ({episodes, onEpisodeSelect}) => {
   });
 
   return (
-    <Collection>
+    <Col s={12} >
       {episodeListItems}
-    </Collection>
+    </Col>
   );
 };
 

@@ -8,11 +8,12 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <div>
-        <input
-          value={this.state.term}
-          onChange={ev => this.onInputChange({ term:ev.target.value })} />
-      </div>
+      <input
+        className="button"
+        placeholder="Buscar..."
+        value={this.state.term}
+        onChange={ev => this.onInputChange({ term:ev.target.value })}
+      />
     );
   }
 

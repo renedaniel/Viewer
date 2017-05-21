@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import SeasonList from './components/season_list';
 import SeasonDetail from './components/season_detail';
+import {Row, Col, Navbar, NavItem} from 'react-materialize';
 import axios from 'axios';
 
 class App extends Component {
@@ -72,19 +73,27 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<SearchBar onSearchTermChange={term => this.searchTerm(term)} />
-				<SeasonList
-					onSeasonSelect={ev => this.selectSeason(ev)}
-					selectedSeason={this.state.selectedSeason}
-					seasons={this.state.seasons}
-				/>
-				<SeasonDetail
-					onEpisodeSelect={ev => this.selectEpisode(ev)}
-					season={this.state.selectedSeason}
-					selectedEpisode={this.state.selectedEpisode}
-				/>
-			</div>
+			<Row>
+				<Row>
+					<Col s={12} >
+						<SearchBar onSearchTermChange={term => this.searchTerm(term)} />
+					</Col>
+					<Col m={6} >
+						<SeasonList
+							onSeasonSelect={ev => this.selectSeason(ev)}
+							selectedSeason={this.state.selectedSeason}
+							seasons={this.state.seasons}
+						/>
+					</Col>
+				</Row>
+				<Row>
+					<SeasonDetail
+						onEpisodeSelect={ev => this.selectEpisode(ev)}
+						season={this.state.selectedSeason}
+						selectedEpisode={this.state.selectedEpisode}
+					/>
+				</Row>
+			</Row>
 		);
 	}
 }
