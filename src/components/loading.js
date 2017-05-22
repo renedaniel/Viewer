@@ -5,7 +5,7 @@ const Loading = ({error}) => {
   if (error) {
     return(
       <Row className="detalle loading center-align">
-        <Col s={12}>La serie o temporada que buscas no existe</Col>
+        <Col s={12} className="contenido-mensaje" >La serie o temporada que buscas no existe</Col>
       </Row>
     );
   }

@@ -1,13 +1,18 @@
 # Viewer
 
-Demo [Viewer](http://viewer)?
+Pequeña aplicación para visualizar temporadas de una serie desarrollada con:
+
+- ReactJS
+- Webpack
+- Babel
+- Materialize
+- PHP
+
+Demo en [Viewer](http://renedaniel.ga/viewer?gid=544242)?
 
 ### Getting Started
 
-There are two methods for getting started with this repo.
-
-#### Familiar with Git?
-Checkout this repo, install dependencies, then start the gulp process with the following:
+Haz Checkout a esta repo, instala dependencias e inicia el servidor de desarrollo
 
 ```
 > git clone https://github.com/renedaniel/Viewer.git
@@ -16,10 +21,10 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 > npm start
 ```
 
-#### Not Familiar with Git?
-Click [here](https://github.com/renedaniel/Viewer/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+#### Producción
+
+Para generar el js del proyecto React y agregarlo a la carpeta public de nuestra página PHP
 
 ```
-> npm install
-> npm start
+> npm run build
 ```

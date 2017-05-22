@@ -4,7 +4,7 @@ import SearchBar from './components/search_bar';
 import SeasonList from './components/season_list';
 import SeasonDetail from './components/season_detail';
 import Loading from './components/loading';
-import {Row, Col, Navbar, NavItem} from 'react-materialize';
+import {Row, Col} from 'react-materialize';
 import axios from 'axios';
 
 class App extends Component {
@@ -91,13 +91,21 @@ class App extends Component {
 
 	render() {
 		if (this.state.procesando === true) {
-			return <Loading error={false} />;
+			return (
+				<Row className="mensaje">
+					<Loading error={false} />
+				</Row>
+			);
 		} else if (this.state.procesando === 'error') {
-			return <Loading error={true} />;
+			return (
+				<Row className="mensaje">
+					<Loading error={true} />
+				</Row>
+			);
 		}
 		if (this.state.noResults) {
 			return(
-				<Row>
+				<Row className="mensaje">
 					<Col s={12} >
 						<SearchBar onSearchTermChange={term => this.searchTerm(term)} term={this.searched} />
 					</Col>
@@ -106,26 +114,24 @@ class App extends Component {
 			);
 		}
 		return (
-			<Row>
-				<Row>
-					<Col s={12} >
-						<SearchBar onSearchTermChange={term => this.searchTerm(term)} term={this.searched} />
-					</Col>
-					<Col m={6} >
-						<SeasonList
-							onSeasonSelect={ev => this.selectSeason(ev)}
-							selectedSeason={this.state.selectedSeason}
-							seasons={this.state.seasons}
-						/>
-					</Col>
-				</Row>
-				<Row>
+			<Row className="detalle">
+				<Col s={12} m={6} >
+					<SearchBar onSearchTermChange={term => this.searchTerm(term)} term={this.searched} />
+				</Col>
+				<Col s={12} m={6} >
+					<SeasonList
+						onSeasonSelect={ev => this.selectSeason(ev)}
+						selectedSeason={this.state.selectedSeason}
+						seasons={this.state.seasons}
+					/>
+				</Col>
+				<Col s={12}>
 					<SeasonDetail
 						onEpisodeSelect={ev => this.selectEpisode(ev)}
 						season={this.state.selectedSeason}
 						selectedEpisode={this.state.selectedEpisode}
 					/>
-				</Row>
+				</Col>
 			</Row>
 		);
 	}

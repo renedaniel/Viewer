@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+import {Row, Col} from 'react-materialize';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -8,12 +9,14 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <input
-        className="button"
-        placeholder="Buscar..."
-        value={this.state.term}
-        onChange={ev => this.onInputChange({ term:ev.target.value })}
-      />
+      <Row className="buscador center-align">
+        <input
+          id="buscador"
+          placeholder="Buscar..."
+          value={this.state.term}
+          onChange={ev => this.onInputChange({ term:ev.target.value })}
+        />
+      </Row>
     );
   }
 

@@ -55,7 +55,12 @@ class Api
 	{
 		$grupoId = $this->request->gid;
 		$request = $this->urlStatic.$grupoId;
-		$json = file_get_contents($request);
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_URL, $request);
+		$json = curl_exec($ch);
+		curl_close($ch);
 		if (!$json) {
 			$json = array('response' => null, 'status' => 1);
 			$json = json_encode($json);

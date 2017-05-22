@@ -1,5 +1,8 @@
 .detalle {
-  background-color: #fcfcfc !important;
+  background-color: #3F51B5 !important;
+}
+.bg-principal, .bg-principal nav {
+  background-color: #212121 !important;
 }
 .episodio-item {
   border-bottom: 1px solid !important;
@@ -8,17 +11,21 @@
   padding-bottom: 10px;
   padding-top: 5px;
 }
-
 .episodio-item:hover {
-    background-color: #BDBDBD;
+    background-color: #3F51B5;
+}
+.episodio-item {
+    background-color: #303F9F;
+}
+.episodio-miniatura:hover {
+    cursor: pointer;
+}
+.episode {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .episodio-item a {
   font-size: 18px;
   margin-bottom: 5px !important;
-}
-.contenedorScroll {
-  overflow-y: scroll;
-  height: 600px;
 }
 .card-image {
   max-height: 100% !important;
@@ -26,60 +33,9 @@
 .card.small {
   height: 200px !important;
 }
-
-.button {
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 250px;
-  height: 42px;
-  cursor: I-beam;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0 20px;
-  overflow: hidden;
-  border: none;
-  -webkit-border-radius: 21px;
-  border-radius:10px;
-  font: normal 20px/normal "Antic", Helvetica, sans-serif;
-  color: rgba(140, 140, 140, 1);
-  text-decoration: normal;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  background: rgba(40, 40, 40, 0.4);
-  -webkit-box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
-  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.5) inset;
-  -webkit-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -moz-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -o-transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  transition: all 502ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
+.buscador {
+  margin-top: 15px !important;
 }
-
-.button:hover {
-  width: 350px;
-  opacity: 0.82;
-  color: rgba(181, 181, 181, 1);
-  background: rgba(0, 0, 0, 0.4);
-  -webkit-transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -moz-transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -o-transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  transition: all 500ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-}
-
-.button:focus {
-  width: 490px;
-  cursor: default;
-  padding: -13px 20px 0;
-  color: rgba(255, 255, 255, 1);
-  -webkit-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -moz-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  -o-transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-  transition: all 601ms cubic-bezier(0.68, -0.75, 0.265, 1.75);
-}
-
 .text {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -92,13 +48,47 @@
   text-overflow: ellipsis;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
-
-input:focus {
-  outline: none;
-}
-
 body {
-  background-image: url("https://i.redd.it/3lxlwac0rfmx.png");
-  background-attachment: fixed;
-  font: normal 20px/normal "Antic", Helvetica, sans-serif;
+  background-color: #303F9F;
+  font: normal 17px/normal "Roboto", Helvetica, sans-serif;
+  color: #FFFFFF !important;
+}
+.titulo-episodio {
+  color: #212121 !important;
+}
+.d {
+  margin-left: 5px !important;
+}
+.l-rojo {
+  color: #e31d1a !important;
+}
+.mensaje {
+  margin-top: 30px;
+}
+.contenido-mensaje {
+  padding-bottom: 30px !important;
+}
+#logo {
+  margin-left: 180px;
+}
+#buscador {
+  background: url(search-dark.png) no-repeat 10px 6px #444;
+  border: 0 none;
+  font: bold 12px Roboto,Helvetica,Sans-serif;
+  color: #777;
+  width: 250px;
+  padding: 6px 15px 6px 35px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+}
+@media (min-width:641px)  {
+  .contenedorScroll {
+    overflow-y: scroll;
+    height: 600px;
+  }
 }

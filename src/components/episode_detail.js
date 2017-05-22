@@ -16,17 +16,17 @@ const EpisodeDetail = ({episode}) => {
 
   return (
     <Row>
-      <Col>
-        <h3>{titulo}</h3>
+      <Col s={12} id="video">
+        <h3 className="titulo-episodio" >{titulo}</h3>
       </Col>
-      <Col>
-        <img src={imgUrl} className="responsive-img" id="video" alt="Imagen preview"/>
+      <Col s={12}>
+        <img src={imgUrl} className="responsive-img episode" alt="Imagen preview"/>
       </Col>
-      <Col className="left-align">
+      <Col s={12} className="left-align">
         <Col s={12}>
           <p>{duracion} || {anio} || {rating}</p>
         </Col>
-        <Col>
+        <Col s={12}>
           <p>{descripcion}</p>
         </Col>
       </Col>
