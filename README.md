@@ -21,7 +21,7 @@ Haz Checkout a esta repo, instala dependencias e inicia el servidor de desarroll
 > npm start
 ```
 Una vez iniciado el servidor de desarrollo, encuentra los cambios compilados en
-- http://localhost/viewer/public
+- http://localhost/viewer/public?gid=grupoId
 
 #### Producción
 

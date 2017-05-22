@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel='stylesheet prefetch' href='http://fonts.googleapis.com/css?family=Roboto'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link rel="stylesheet" href="style/style.css?v=1.11">
+    <link rel="stylesheet" href="style/style.css?v=1.13">
   </head>
   <body>
     <div class="navbar-fixed bg-principal">
@@ -26,5 +26,5 @@
   </body>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-  <script src="build/bundle.js?v=1.11"></script>
+  <script src="build/bundle.js?v=1.13"></script>
 </html>
