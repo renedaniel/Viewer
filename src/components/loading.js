@@ -11,7 +11,7 @@ const Loading = ({error}) => {
   }
   return (
     <Row className="detalle loading center-align">
-      <Col s={12}>Cargando datos</Col>
+      <Col s={12} className="mensaje" >Cargando datos</Col>
       <div className="preloader-wrapper big active">
         <div className="spinner-layer spinner-blue-only">
           <div className="circle-clipper left">

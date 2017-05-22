@@ -53,6 +53,10 @@ body {
   font: normal 17px/normal "Roboto", Helvetica, sans-serif;
   color: #FFFFFF !important;
 }
+.descripcion-episodio {
+  color: #FFFFFF !important;
+  font-size: 15px !important;
+}
 .titulo-episodio {
   color: #212121 !important;
 }
@@ -60,16 +64,13 @@ body {
   margin-left: 5px !important;
 }
 .l-rojo {
-  color: #e31d1a !important;
+  color: #FFFFFF !important;
 }
 .mensaje {
   margin-top: 30px;
 }
 .contenido-mensaje {
   padding-bottom: 30px !important;
-}
-#logo {
-  margin-left: 180px;
 }
 #buscador {
   background: url(search-dark.png) no-repeat 10px 6px #444;
@@ -90,5 +91,10 @@ body {
   .contenedorScroll {
     overflow-y: scroll;
     height: 600px;
+  }
+}
+@media (min-width:1000px)  {
+  #logo {
+    margin-left: 180px;
   }
 }

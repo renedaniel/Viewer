@@ -16,7 +16,8 @@ const EpisodeDetail = ({episode}) => {
 
   return (
     <Row>
-      <Col s={12} id="video">
+      <div id="video" />
+      <Col s={12}>
         <h3 className="titulo-episodio" >{titulo}</h3>
       </Col>
       <Col s={12}>

@@ -25,7 +25,9 @@ const EpisodeListItem = ({episode, onEpisodeSelect}) => {
         />
       </Col>
       <Col s={6} >
-        {descripcion}
+        <a onClick={onEpisodeSelect} id={id} href="#video" className="descripcion-episodio">
+          {descripcion}
+        </a>
       </Col>
     </Row>
   );
