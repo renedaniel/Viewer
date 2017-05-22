@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import SearchBar from './components/search_bar';
 import SeasonList from './components/season_list';
 import SeasonDetail from './components/season_detail';
+import Loading from './components/loading';
 import {Row, Col, Navbar, NavItem} from 'react-materialize';
 import axios from 'axios';
 
@@ -10,12 +11,14 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		let a = 'https://mfwkweb-api.clarovideo.net/services/content/serie?api_version=v5.4&authpn=webclient&authpt=tfg1h3j4k6fd7&format=json&region=mexico&device_id=web&device_category=web&device_model=web&device_type=web&device_manufacturer=generic&HKS=q12fva9pjnhauhd4jg0d02e0t1&group_id=544242';
+		let a = 'https://mfwkweb-api.clarovideo.net/services/content/serie?api_version=v5.4&authpn=webclient&authpt=tfg1h3j4k6fd7&format=json&region=mexico&device_id=web&device_category=web&device_model=web&device_type=web&device_manufacturer=generic&HKS=q12fva9pjnhauhd4jg0d02e0t1&group_id=544240';
 
 		this.state = {
 			seasons: [],
-			selectedSeason: null
+			selectedSeason: null,
+			procesando: true
 		 };
+		 this.searched = '';
 
 		axios.get(a)
   		.then((response) => {
@@ -23,10 +26,12 @@ class App extends Component {
 					let r = response.data.response;
 					this.performState(r.seasons, 1);
 					this.seasonsCache = r.seasons;
+				} else {
+					this.setState({procesando:'error'});
 				}
 		  })
 		  .catch(function (error) {
-		    console.log(error);
+		    this.setState({procesando:'error'});
 		});
 
 	}
@@ -41,7 +46,7 @@ class App extends Component {
 			}
 			return episode.id == selectedSeason.first_episode;
 		});
-		this.setState({ seasons, selectedSeason, selectedEpisode });
+		this.setState({ seasons, selectedSeason, selectedEpisode, procesando:false, noResults:false });
 	}
 
 	selectSeason(ev) {
@@ -67,16 +72,32 @@ class App extends Component {
 		if (seasons.length > 0) {
 			this.performState(seasons, seasons[0].number);
 		} else {
-			console.log('No results');
+			this.setState({noResults:true});
 		}
+		this.searched = search.term;
 	}
 
 	render() {
+		if (this.state.procesando === true) {
+			return <Loading error={false} />;
+		} else if (this.state.procesando === 'error') {
+			return <Loading error={true} />;
+		}
+		if (this.state.noResults) {
+			return(
+				<Row>
+					<Col s={12} >
+						<SearchBar onSearchTermChange={term => this.searchTerm(term)} term={this.searched} />
+					</Col>
+					<Loading error={true} />
+				</Row>
+			);
+		}
 		return (
 			<Row>
 				<Row>
 					<Col s={12} >
-						<SearchBar onSearchTermChange={term => this.searchTerm(term)} />
+						<SearchBar onSearchTermChange={term => this.searchTerm(term)} term={this.searched} />
 					</Col>
 					<Col m={6} >
 						<SeasonList

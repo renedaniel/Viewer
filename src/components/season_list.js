@@ -1,11 +1,12 @@
 import React, { Component} from 'react';
 import SeasonListItem from './season_list_item';
 import SeasonDetail from './season_detail';
+import Loading from './loading';
 import {Row, Input} from 'react-materialize';
 
 const SeasonList = ({seasons, selectedSeason, onSeasonSelect}) => {
-  if (!seasons || !selectedSeason) {
-    return <div>loading...</div>;
+  if (!seasons || !selectedSeason || !onSeasonSelect) {
+    return <Loading error={false} />;
   }
 
   const seasonsItems = seasons.map((season) => {

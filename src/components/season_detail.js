@@ -2,10 +2,11 @@ import React from 'react';
 import {Row, Col, Card, CardTitle} from 'react-materialize';
 import EpisodeList from './episode_list';
 import EpisodeDetail from './episode_detail';
+import Loading from './loading';
 
 const SeasonDetail = ({season, selectedEpisode, onEpisodeSelect}) => {
   if (!season || !selectedEpisode || !onEpisodeSelect) {
-    return <div>loading...</div>;
+    return <Loading error={false} />;
   }
 
   const titulo = season.title_original;

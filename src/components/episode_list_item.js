@@ -7,7 +7,6 @@ const EpisodeListItem = ({episode, onEpisodeSelect}) => {
   const descripcion = episode.description;
   const imageUrl = episode.image_still;
 
-
   return (
     <Row className="episodio-item">
       <Col s={12}>
@@ -17,6 +16,7 @@ const EpisodeListItem = ({episode, onEpisodeSelect}) => {
       </Col>
       <Col s={5} >
         <img
+          alt="Preview"
           src={imageUrl}
           className="responsive-img episodio-miniatura hoverable"
           onClick={onEpisodeSelect}

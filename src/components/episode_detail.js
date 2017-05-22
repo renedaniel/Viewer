@@ -1,9 +1,10 @@
 import React from 'react';
 import {Row, Col, MediaBox} from 'react-materialize';
+import Loading from './loading';
 
 const EpisodeDetail = ({episode}) => {
   if (!episode) {
-    return <div>loading...</div>;
+    return <Loading error={false} />;
   }
 
   const titulo = episode.title_episode;
@@ -19,7 +20,7 @@ const EpisodeDetail = ({episode}) => {
         <h3>{titulo}</h3>
       </Col>
       <Col>
-        <img src={imgUrl} className="responsive-img" id="video" />
+        <img src={imgUrl} className="responsive-img" id="video" alt="Imagen preview"/>
       </Col>
       <Col className="left-align">
         <Col s={12}>

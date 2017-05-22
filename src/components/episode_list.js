@@ -1,10 +1,11 @@
 import React from 'react';
 import EpisodeListItem from './episode_list_item';
 import {Row, Col} from 'react-materialize';
+import Loading from './loading';
 
 const EpisodeList = ({episodes, onEpisodeSelect}) => {
-  if (!episodes) {
-    return <div>loading ...</div>;
+  if (!episodes || !onEpisodeSelect) {
+    return <Loading error={false} />;
   }
 
   const episodeListItems = episodes.map((episode) => {
