@@ -11,7 +11,9 @@ class App extends Component {
 	constructor(props) {
 		super(props);
 
-		let a = 'https://mfwkweb-api.clarovideo.net/services/content/serie?api_version=v5.4&authpn=webclient&authpt=tfg1h3j4k6fd7&format=json&region=mexico&device_id=web&device_category=web&device_model=web&device_type=web&device_manufacturer=generic&HKS=q12fva9pjnhauhd4jg0d02e0t1&group_id=544240';
+		let apiUrl = 'api/api.php?action=getSeason&gid=';
+		let grupoId = this.getParameterByName('gid');
+		let urlRequest = apiUrl+grupoId;
 
 		this.state = {
 			seasons: [],
@@ -20,7 +22,7 @@ class App extends Component {
 		 };
 		 this.searched = '';
 
-		axios.get(a)
+		axios.get(urlRequest)
   		.then((response) => {
 				if (response.data.status === '0') {
 					let r = response.data.response;
@@ -34,6 +36,16 @@ class App extends Component {
 		    this.setState({procesando:'error'});
 		});
 
+	}
+
+	getParameterByName(name, url) {
+	    if (!url) url = window.location.href;
+	    name = name.replace(/[\[\]]/g, "\\$&");
+	    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+	        results = regex.exec(url);
+	    if (!results) return null;
+	    if (!results[2]) return '';
+	    return decodeURIComponent(results[2].replace(/\+/g, " "));
 	}
 
 	performState(seasons, selectedSeasonNumber, selectedEpisodeId = undefined){
@@ -119,4 +131,4 @@ class App extends Component {
 	}
 }
 
-ReactDOM.render(<App />, document.querySelector('.container'));
+ReactDOM.render(<App />, document.querySelector('#app'));
