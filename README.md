@@ -25,7 +25,7 @@ Una vez iniciado el servidor de desarrollo, encuentra los cambios compilados en
 
 #### Producción
 
-Para generar el js del proyecto React y agregarlo a la carpeta public de nuestra página PHP
+Para generar el js de producción y agregarlo automáticamente a la carpeta public de nuestra página PHP
 
 ```
 > npm run build
